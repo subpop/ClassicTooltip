@@ -1,15 +1,8 @@
-## Interface: 20100
+## Interface: 50504, 11509, 16001
 ## Title: ClassicTooltip
-## Version: 2.1.0
-## Notes: Reverts tooltips to the style from about the 1.0 "retail" release
-## X-Date: May 24, 2007
-## X-Email: subpopculture@mac.com
-## X-Website: http://code.google.com/p/subpop-wow
-## X-Category: MYADDONS_CATEGORY_OTHERS
-## X-Help: ClassicTooltipHelp
-## X-OptionsFrame: ClassicTooltipOptions
-## SavedVariables: ClassicTooltipSettings
+## Notes: Reverts unit tooltips to the circa-1.0 style: backdrop coloring and compact lines.
 ## Author: Link Dupont
-## OptionalDeps: myAddons
+## Version: 2.2.0
+## SavedVariables: ClassicTooltipSettings
+
 ClassicTooltip.lua
-ClassicTooltip.xml
