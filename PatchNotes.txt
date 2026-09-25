@@ -1,0 +1,20 @@
+Version 2.1.0 - May 24, 2007
+* Updated Interface number to 20100
+* Instead of adding cases for all the "Not Specified" creature types in Burning Crusade, we switched to using UnitCreatureFamily for the cases that are not specified in UnitCreatureType.
+
+Version 2.0.2 - March 6, 2007
+* Fixed health status bar sticking around on certain doodads when it shouldn't. (issue #10)
+* Added case for "Sap Beast" (another "Not Specified" creature type)
+
+Version 2.0.1 - February 17, 2007
+* Added options frame, accessible through /ct.
+* Added check box to enable/disable using the classic tooltips. This can be toggled quickly by calling the function CT_ToggleEnabled() (in a macro or via a custom SlashCommand).
+* Added option to display guild name in the classic tooltip, also accessible via the UI.
+* Fixed the missing health bar that used to be there, that disappeared in the 2.0 rewrite.
+
+Version 2.0.0 - February 3, 2007
+
+* Code updated to reflect the changes in the Lua engine for the 2.0 release.
+* No new features have been added; this is entirely a maintenance release.
+* This is effectively a total rewrite, because of the changes to the GameTooltip code over the releases. The code is actually significantly smaller now. :)
+* This addon hasn't been tested with many others that modify the tooltip. TheoryCraft2 works, and anything that simply inserts extra lines into the tooltip should probably work fine.
