@@ -1,4 +1,4 @@
--- ClassicTooltip 2.2.0 by Link Dupont
+-- ClassicTooltip 2.2.1 by Link Dupont
 --
 -- Reverts unit tooltips to the circa-1.0 style:
 --   * Backdrop coloring instead of coloring the unit's name
@@ -34,7 +34,7 @@ local function CT_GetVersion()
 	elseif (GetAddOnMetadata) then
 		return GetAddOnMetadata(ADDON_NAME, "Version");
 	end
-	return "2.2.0";
+	return "2.2.1";
 end
 
 -- The 2.x-era reaction palette, hardcoded. The modern client's
@@ -54,6 +54,12 @@ local CT_CLASSIC_COLORS = {
 };
 
 local CT_FALLBACK_BLUE = { r = 0.0, g = 0.0, b = 1.0 };
+
+-- The 2004-era default tooltip text color used for every unit name.
+local CT_NAME_YELLOW = { r = 1.0, g = 0.82, b = 0.0 };
+
+-- Backdrop fill translucency: the world shows through ~25%.
+local CT_FILL_ALPHA = 0.75;
 
 local function CT_FactionColor(index)
 	local c = CT_CLASSIC_COLORS[index];
@@ -121,7 +127,7 @@ local function CT_LeftLineText(tooltip, i)
 	return nil;
 end
 
--- Classic backdrop tint: solid fills in a muted middle palette. The 2.x
+-- Classic backdrop tint: translucent fills in a muted middle palette. The 2.x
 -- rendering path (tint multiplied over the texture) assumed the light 2007
 -- backdrop, but the modern atlas is much darker, so faithful tints render
 -- near-black. Fills replace the dark texture entirely and read clearly,
@@ -142,7 +148,7 @@ local function CT_ApplyFill(tooltip, r, g, b)
 	local center = tooltip.NineSlice and tooltip.NineSlice.Center;
 	if (center and center.SetColorTexture) then
 		local mr, mg, mb = CT_MuteColor(r, g, b);
-		center:SetColorTexture(mr, mg, mb, 1);
+		center:SetColorTexture(mr, mg, mb, CT_FILL_ALPHA);
 		if (center.SetVertexColor) then
 			center:SetVertexColor(1, 1, 1, 1);
 		end
@@ -159,12 +165,12 @@ local function CT_SetBackdrop(tooltip, r, g, b)
 	end
 	if (tooltip.SetBackdropColor) then
 		local mr, mg, mb = CT_MuteColor(r, g, b);
-		tooltip:SetBackdropColor(mr, mg, mb);
+		tooltip:SetBackdropColor(mr, mg, mb, CT_FILL_ALPHA);
 		return;
 	end
 	local nineSlice = tooltip.NineSlice;
 	if (nineSlice and nineSlice.SetCenterColor) then
-		nineSlice:SetCenterColor(r, g, b, 1);
+		nineSlice:SetCenterColor(r, g, b, CT_FILL_ALPHA);
 	end
 end
 
@@ -237,9 +243,9 @@ local function CT_RebuildTooltip(tooltip, unit, snapshot)
 	local name = UnitName(unit) or UNKNOWN or "Unknown";
 	local level = CT_LevelText(unit);
 
-	-- Explicit white: tooltip lines recycle FontStrings, so without a color
+	-- Fixed era yellow: tooltip lines recycle FontStrings, so without a color
 	-- the name would keep Blizzard's reaction coloring.
-	tooltip:AddLine(name, 1, 1, 1);
+	tooltip:AddLine(name, CT_NAME_YELLOW.r, CT_NAME_YELLOW.g, CT_NAME_YELLOW.b);
 
 	if (UnitIsPlayer(unit)) then
 		-- First returns are the display names ("Worgen Druid"), matching the

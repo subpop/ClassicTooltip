@@ -2,7 +2,7 @@
 ## Title: ClassicTooltip
 ## Notes: Reverts unit tooltips to the circa-1.0 style: backdrop coloring and compact lines.
 ## Author: Link Dupont
-## Version: 2.2.0
+## Version: 2.2.1
 ## SavedVariables: ClassicTooltipSettings
 
 ClassicTooltip.lua

@@ -14,6 +14,8 @@ ClassicTooltip goes the other way:
   text.
 - The health bar still shows for valid units and hides with the tooltip.
 
+| ![2004-ClassicTooltip-Friendly-NPC.jpg](./Screenshots/2004-ClassicTooltip-Friendly-NPC.jpg) | ![2026-ClassicTooltip-Player.jpg](./Screenshots/2026-ClassicTooltip-Friendly-NPC.jpeg) |
+
 ## Configuration
 
 Open Settings (Esc > Options) and find ClassicTooltip in the AddOns list,
@@ -31,5 +33,5 @@ screen.
 
 ## Compatibility
 
-Supports Mists of Pandaria Classic, and Classic Era. Item, spell, and other
-non-unit tooltips are left completely untouched.
+Supports Mists of Pandaria Classic, Classic Era and Forever. Item, spell, and
+other non-unit tooltips are left completely untouched.

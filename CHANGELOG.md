@@ -1,5 +1,12 @@
 # ClassicTooltip Changelog
 
+## 2.2.1
+
+- Faithful-color pass against 2004 screenshots: the unit name is always the
+  era yellow, like the original tooltips.
+- The backdrop fill is now translucent (alpha 0.75) instead of fully solid,
+  so the world shows through like the originals.
+
 ## 2.2.0
 
 - Rebuilt for modern Classic clients: Mists of Pandaria Classic, and Classic
